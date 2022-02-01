@@ -19,6 +19,8 @@ export class QuizComponent implements OnInit {
 
   @Output()
   quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  quizSelected: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
   constructor() {
   }
@@ -27,6 +29,10 @@ export class QuizComponent implements OnInit {
   }
 
   selectQuiz() {
+    this.quizSelected.emit(true);
+  }
+
+  deleteQuiz(){
     this.quizSelected.emit(true);
   }
 }
