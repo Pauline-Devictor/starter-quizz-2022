@@ -36,4 +36,10 @@ export class QuizService {
     // You need here to update the list of quiz and then update our observable (Subject) with the new list
     // More info: https://angular.io/tutorial/toh-pt6#the-searchterms-rxjs-subject
   }
+  deleteQuiz(quiz: Quiz){
+    let index = this.quizzes.indexOf(quiz);
+    this.quizzes.splice(index,1);
+    this.quizzes$.next(this.quizzes);
+
+  }
 }

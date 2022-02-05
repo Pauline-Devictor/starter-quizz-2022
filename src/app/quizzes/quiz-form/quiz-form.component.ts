@@ -11,7 +11,11 @@ import {QUESTION_SPORT, QUESTION_VIDE} from "../../../mocks/quiz-list.mock";
   templateUrl: './quiz-form.component.html',
   styleUrls: ['./quiz-form.component.scss']
 })
+
+
 export class QuizFormComponent implements OnInit {
+  public THEME_LIST: string[] = ['Cinema','Sport','Autre'];
+
 
   // Note: We are using here ReactiveForms to create our form. Be careful when you look for some documentation to
   // avoid TemplateDrivenForm (another type of form)
@@ -27,6 +31,7 @@ export class QuizFormComponent implements OnInit {
     this.quizForm = this.formBuilder.group({
       name: [''],
       theme: [''],
+      creationDate: new Date()
     });
     // You can also add validators to your inputs such as required, maxlength or even create your own validator!
     // More information: https://angular.io/guide/reactive-forms#simple-form-validation
