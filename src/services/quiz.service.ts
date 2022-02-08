@@ -33,6 +33,9 @@ export class QuizService {
   }
 
   addQuiz(quiz: Quiz) {
+    let id = this.quizzes.length;
+    id += 1
+    quiz.id = String(id);
     this.quizzes.push(quiz);
     this.quizzes$.next(this.quizzes);
 
@@ -48,10 +51,17 @@ export class QuizService {
   getQuizzes(){
     this.http.get<Quiz[]>(this.stockURL).subscribe((quizList) => {
       this.quizzes = quizList;
+      this.addId();
       this.quizzes$.next(this.quizzes);
       console.log(quizList);
     });
-
-
   }
+  addId(){
+    let id =0
+    this.quizzes.forEach(value => {
+      value.id = String(id);
+      id +=1;
+    })
+  }
+
 }

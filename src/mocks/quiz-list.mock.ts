@@ -43,11 +43,13 @@ import { Question } from '../models/question.model';
 export const QUIZ_LIST: Quiz[] = [
     {
         name: 'Changement du nom', // What's happening if I change this value..?
+        id: '0',
         theme: 'Actor',
         questions: [QUESTION_ACTOR],
     },
     {
         name: 'Les Sports',
+        id: '1',
         theme : 'Ceci est un thème',
         questions: [QUESTION_SPORT],
     }
