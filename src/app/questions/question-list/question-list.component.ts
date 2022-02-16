@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
+import {Component, Input, OnInit} from '@angular/core';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
-import {QuestionsComponent} from "../question/question.component";
-import {QUESTION_SPORT, QUESTION_VIDE} from "../../../mocks/quiz-list.mock";
+import {Answer, Question} from "../../../models/question.model";
+import {EditQuizComponent} from "../../quizzes/edit-quiz/edit-quiz.component";
 
 @Component({
   selector: 'app-question-list',
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
 })
-
-
 export class QuestionListComponent implements OnInit {
+  @Input()
+  quiz:Quiz|undefined;
+
+  public questionList: Question[] | undefined = [];
+
   ngOnInit() {
+    this.questionList = this.quiz?.questions;
   }
+
+
 }

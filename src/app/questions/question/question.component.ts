@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
+import {ActivatedRoute} from "@angular/router";
+import {Location} from "@angular/common";
+import {Question} from "../../../models/question.model";
 
 @Component({
   selector: 'app-question',
@@ -9,7 +12,9 @@ import { Quiz } from '../../../models/quiz.model';
 })
 
 export class QuestionsComponent implements OnInit{
-  ngOnInit() {
-  }
+ @Input()
+ question: Question | undefined;
+  ngOnInit():void {
 
+  }
 }
