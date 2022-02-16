@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
-import {QuizComponent} from "../app/quizzes/quiz/quiz.component";
-import {QuizListComponent} from "../app/quizzes/quiz-list/quiz-list.component";
 import {Question, QUESTION_LIST} from "../models/question.model";
+import {User} from "../models/user.model";
+import {USER_LIST} from "../mocks/user-list.mock";
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +30,8 @@ export class QuizService {
 
   private stockURL = 'https://raw.githubusercontent.com/NablaT/starter-quiz-two/master/mock-quiz.json';
 
-  private questions: Question[] = QUESTION_LIST;
-  public questions$: BehaviorSubject<Question[]> = new BehaviorSubject(QUESTION_LIST);
+  private users: User[] = USER_LIST;
+  public users$: BehaviorSubject<User[]> = new BehaviorSubject(USER_LIST);
 
   constructor(private http: HttpClient) {
   }
@@ -79,5 +79,16 @@ export class QuizService {
    /* this.questions.push(question);
     this.questions$.next(this.questions);*/
     this.quizzes$.next(this.quizzes);
+  }
+
+  addUser(user:User){
+    this.users.push(user);
+    this.users$.next(this.users);
+  }
+
+  deleteUser(user:User){
+    let index = this.users.indexOf(user);
+    this.users.splice(index,1);
+    this.users$.next(this.users);
   }
 }

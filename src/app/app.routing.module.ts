@@ -5,12 +5,14 @@ import {QuizListComponent} from "./quizzes/quiz-list/quiz-list.component";
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import {QuestionsComponent} from "./questions/question/question.component";
 import {QuestionListComponent} from "./questions/question-list/question-list.component";
+import {UserListComponent} from "./users/user-list/user-list.component";
 
 const routes: Routes = [
   {path:'quiz-list', component: QuizListComponent},
   {path: 'edit-quiz', component: EditQuizComponent},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'detail/:id', component: EditQuizComponent },//Permet de relier à la page details
+  {path:'user-list',component: UserListComponent}
 
 ];
 
