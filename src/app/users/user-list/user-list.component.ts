@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {QuizService} from "../../../services/quiz.service";
-import {Quiz} from "../../../models/quiz.model";
 import {User} from "../../../models/user.model";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-user-list',
@@ -12,8 +11,8 @@ import {User} from "../../../models/user.model";
 export class UserListComponent implements OnInit{
   public userList: User[] = [];
 
-  constructor(public quizService: QuizService) {
-    this.quizService.users$.subscribe((userList) => {
+  constructor(public userService: UserService) {
+    this.userService.users$.subscribe((userList) => {
       this.userList = userList;
     });
   }
@@ -22,7 +21,7 @@ export class UserListComponent implements OnInit{
   }
 
   deleteUser(user: User){
-    this.quizService.deleteUser(user);
+    this.userService.deleteUser(user);
     console.log('event deletion',user);
   }
 }

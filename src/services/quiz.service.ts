@@ -30,8 +30,6 @@ export class QuizService {
 
   private stockURL = 'https://raw.githubusercontent.com/NablaT/starter-quiz-two/master/mock-quiz.json';
 
-  private users: User[] = USER_LIST;
-  public users$: BehaviorSubject<User[]> = new BehaviorSubject(USER_LIST);
 
   constructor(private http: HttpClient) {
   }
@@ -79,16 +77,5 @@ export class QuizService {
    /* this.questions.push(question);
     this.questions$.next(this.questions);*/
     this.quizzes$.next(this.quizzes);
-  }
-
-  addUser(user:User){
-    this.users.push(user);
-    this.users$.next(this.users);
-  }
-
-  deleteUser(user:User){
-    let index = this.users.indexOf(user);
-    this.users.splice(index,1);
-    this.users$.next(this.users);
   }
 }

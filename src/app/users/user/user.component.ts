@@ -12,7 +12,7 @@ export class UserComponent implements OnInit{
   user:User|undefined;
 
   @Output()
-  userDelected: EventEmitter<User> = new EventEmitter<User>();
+  userDeleted: EventEmitter<User> = new EventEmitter<User>();
 
   constructor() {
   }
@@ -21,6 +21,6 @@ export class UserComponent implements OnInit{
   }
 
   deleteUser(){
-    this.userDelected.emit(this.user);
+    this.userDeleted.emit(this.user);
   }
 }
