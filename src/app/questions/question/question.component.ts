@@ -1,8 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { QuizService } from '../../../services/quiz.service';
-import { Quiz } from '../../../models/quiz.model';
-import {ActivatedRoute} from "@angular/router";
-import {Location} from "@angular/common";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from "../../../models/question.model";
 
 @Component({
@@ -14,7 +10,14 @@ import {Question} from "../../../models/question.model";
 export class QuestionsComponent implements OnInit{
  @Input()
  question: Question | undefined;
+ @Output()
+ questionDeleted: EventEmitter<Question> = new EventEmitter<Question>();
+
   ngOnInit():void {
 
+  }
+
+  deleteQuestion(){
+    this.questionDeleted.emit(this.question);
   }
 }

@@ -15,9 +15,17 @@ export class QuestionListComponent implements OnInit {
 
   public questionList: Question[] | undefined = [];
 
+  constructor(public quizService: QuizService) {
+
+  }
+
   ngOnInit() {
     this.questionList = this.quiz?.questions;
   }
 
+  deleteQuestion(question : Question){
+    this.quizService.deleteQuestion(question,this.quiz?.id);
+    console.log('event deletion',question);
+  }
 
 }

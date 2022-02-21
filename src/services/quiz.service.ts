@@ -78,4 +78,12 @@ export class QuizService {
     this.questions$.next(this.questions);*/
     this.quizzes$.next(this.quizzes);
   }
+
+  deleteQuestion(question:Question, id:string|undefined){
+    let quiz = this.quizzes.find(q => q.id === id)!;
+    let index = quiz.questions.indexOf(question);
+    let indexQuiz = this.quizzes.indexOf(quiz)
+    this.quizzes[indexQuiz].questions.splice(index,1);
+    this.quizzes$.next(this.quizzes);
+  }
 }
