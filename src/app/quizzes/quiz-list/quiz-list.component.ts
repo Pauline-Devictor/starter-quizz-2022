@@ -12,7 +12,6 @@ export class QuizListComponent implements OnInit {
   public quizList: Quiz[] = [];
 
   constructor(public quizService: QuizService) {
-    this.quizService.getQuizzes();
     this.quizService.quizzes$.subscribe((quizList) => {
       this.quizList = quizList;
     });

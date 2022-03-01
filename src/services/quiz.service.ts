@@ -32,6 +32,7 @@ export class QuizService {
 
 
   constructor(private http: HttpClient) {
+    this.getQuizzes();
   }
 
   addQuiz(quiz: Quiz) {
@@ -50,6 +51,7 @@ export class QuizService {
     this.quizzes$.next(this.quizzes);
 
   }
+
   getQuizzes(){
     this.http.get<Quiz[]>(this.stockURL).subscribe((quizList) => {
       this.quizzes = quizList;
@@ -58,6 +60,7 @@ export class QuizService {
       console.log(quizList);
     });
   }
+
   addId(){
     let id =0
     this.quizzes.forEach(value => {
